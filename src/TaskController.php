@@ -2,12 +2,18 @@
 
 class TaskController
 {
+
+    public function __construct(private TaskGateway $gateway)
+    {
+        
+    }
+
     public function processRequest(string $method, ?string $id): void
     {
         if ($id === null) {
             
             if ($method == "GET") {
-                echo "index";
+                echo json_encode($this->gateway->getAll());
             } elseif ($method == "POST") {
                 echo "create";
             } else {
