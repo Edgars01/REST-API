@@ -69,7 +69,8 @@ class TaskController
                     break;
                     
                 case "DELETE":
-                    echo "delete $id";
+                    $rows = $this->gateway->delete($id);
+                    echo json_encode(["message" => "Task deleted", "rows" => $rows]);
                     break;
                     
                 default:
